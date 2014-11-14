@@ -47,8 +47,11 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    AFHTTPClient *httpClient = [[AFHTTPClient alloc] init];
-    [httpClient setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+    //AFHTTPClient *httpClient = [[AFHTTPClient alloc] init];
+    NSURL *baseURL = [NSURL URLWithString:@"http://sitegeist.sunlightfoundation.com/"];
+    AFHTTPRequestOperationManager *manager = [[AFHTTPRequestOperationManager alloc] initWithBaseURL:baseURL];
+
+    [manager.reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
         if (status == AFNetworkReachabilityStatusNotReachable) {
             SFAboutViewController *popup = [[SFAboutViewController alloc] init];
             [self presentViewController:popup animated:YES completion:nil];
@@ -270,7 +273,7 @@
 
 - (void)paginate:(id)sender forEvent:(UIEvent *)event
 {
-    NSLog(@"paginate: %d to %d", _controllerIndex, _pageControl.currentPage);
+    NSLog(@"paginate: %d to %ld", _controllerIndex, (long)_pageControl.currentPage);
     if (_pageControl.currentPage > _controllerIndex) {
         [self nextPane];
     } else if (_pageControl.currentPage < _controllerIndex) {
