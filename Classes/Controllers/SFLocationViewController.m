@@ -13,6 +13,8 @@
 #import "WildcardGestureRecognizer.h"
 #import <MapKit/MapKit.h>
 
+#define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+
 @interface SFLocationViewController ()
 
 @property BOOL mapMoved;
@@ -26,11 +28,27 @@
 @synthesize cancelButton = _cancelButton;
 @synthesize homeButton = _homeButton;
 @synthesize localButton = _localButton;
+@synthesize locationManager = _locationManager;
 
 - (void)viewDidAppear:(BOOL)animated
 {
     self.mapMoved = NO;
-        
+    
+    _locationManager = [[CLLocationManager alloc] init];
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.delegate = self;
+    [_locationManager startUpdatingLocation];
+    _startLocation = nil;
+    
+#ifdef __IPHONE_8_0
+    if(IS_OS_8_OR_LATER) {
+        // Use one or the other, not both. Depending on what you put in info.plist
+        [self.locationManager requestWhenInUseAuthorization];
+        //[self.locationManager requestAlwaysAuthorization];
+    }
+#endif
+    [self.locationManager startUpdatingLocation];
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSArray *cll = [userDefaults objectForKey:@"cll"];
     if (!cll) {
@@ -107,6 +125,40 @@
         [self.mapView addAnnotation:self.mapPin];
     }
     
+}
+
+#pragma mark CLLocationManagerDelegate
+
+-(void)locationManager:(CLLocationManager *)manager
+   didUpdateToLocation:(CLLocation *)newLocation
+          fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"Location Services location changed method called");
+    NSString *currentLatitude = [[NSString alloc] initWithFormat:@"%+.6f", newLocation.coordinate.latitude];
+//    _latitude.text = currentLatitude;
+    
+    NSString *currentLongitude = [[NSString alloc] initWithFormat:@"%+.6f", newLocation.coordinate.longitude];
+//    _longitude.text = currentLongitude;
+    
+    NSString *currentHorizontalAccuracy =
+    [[NSString alloc]
+     initWithFormat:@"%+.6f",
+     newLocation.horizontalAccuracy];
+//    _horizontalAccuracy.text = currentHorizontalAccuracy;
+    
+    NSString *currentAltitude = [[NSString alloc] initWithFormat:@"%+.6f", newLocation.altitude];
+//    _altitude.text = currentAltitude;
+    
+    NSString *currentVerticalAccuracy = [[NSString alloc] initWithFormat:@"%+.6f", newLocation.verticalAccuracy];
+//    _verticalAccuracy.text = currentVerticalAccuracy;
+    
+    if (_startLocation == nil)
+        _startLocation = newLocation;
+    
+    CLLocationDistance distanceBetween = [newLocation distanceFromLocation:_startLocation];
+    
+    NSString *tripString = [[NSString alloc] initWithFormat:@"%f", distanceBetween];
+//    _distance.text = tripString;
 }
 
 - (void)viewDidDisappear:(BOOL)animated

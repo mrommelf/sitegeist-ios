@@ -49,5 +49,7 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Sitegeist would like to use your location.</string>
 </dict>
 </plist>

@@ -10,12 +10,15 @@
 #import <MapKit/MapKit.h>
 #import <UIKit/UIKit.h>
 
-@interface SFLocationViewController : UIViewController <MKMapViewDelegate>
+@interface SFLocationViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, retain) IBOutlet UIButton *cancelButton;
 @property (nonatomic, retain) IBOutlet UIButton *homeButton;
 @property (nonatomic, retain) IBOutlet UIButton *localButton;
 
 - (void)mapView:(MKMapView *)mapView didUpdateUserLocation:(MKUserLocation *)userLocation;
+
+@property (strong, nonatomic) CLLocationManager *locationManager;
+@property (strong, nonatomic) CLLocation *startLocation;
 
 @end

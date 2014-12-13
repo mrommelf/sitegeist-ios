@@ -59,8 +59,10 @@
 		3FD00CE716133E6B0096596F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FD00CE616133E6B0096596F /* CoreGraphics.framework */; };
 		3FF4D4F6165D714A00C9BC66 /* 42-info.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FF4D4F4165D714A00C9BC66 /* 42-info.png */; };
 		3FF4D4F7165D714A00C9BC66 /* 42-info@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3FF4D4F5165D714A00C9BC66 /* 42-info@2x.png */; };
+		4D52607C1A203F750054D747 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D52607B1A203F750054D747 /* CoreLocation.framework */; };
 		4D92D2F51A158F8F0043BAAC /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D92D2F41A158F8F0043BAAC /* MobileCoreServices.framework */; };
 		4D92D2F71A159D950043BAAC /* libPods-AFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D92D2F61A159D950043BAAC /* libPods-AFNetworking.a */; };
+		4D92D2F91A1802870043BAAC /* Sitegeist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D92D2F81A1802870043BAAC /* Sitegeist.storyboard */; };
 		7062303B7F8C654B7E7E54E9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 792B09E995F991B3E46A264F /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -133,8 +135,10 @@
 		3FD00D0016133E6C0096596F /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		3FF4D4F4165D714A00C9BC66 /* 42-info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "42-info.png"; sourceTree = "<group>"; };
 		3FF4D4F5165D714A00C9BC66 /* 42-info@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "42-info@2x.png"; sourceTree = "<group>"; };
+		4D52607B1A203F750054D747 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		4D92D2F41A158F8F0043BAAC /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		4D92D2F61A159D950043BAAC /* libPods-AFNetworking.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-AFNetworking.a"; path = "Pods/build/Debug-iphoneos/libPods-AFNetworking.a"; sourceTree = "<group>"; };
+		4D92D2F81A1802870043BAAC /* Sitegeist.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Sitegeist.storyboard; sourceTree = "<group>"; };
 		792B09E995F991B3E46A264F /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		909DF4D136E0F0FAB52C8FD8 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D2936594E38F25CA1D369F78 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D52607C1A203F750054D747 /* CoreLocation.framework in Frameworks */,
 				4D92D2F71A159D950043BAAC /* libPods-AFNetworking.a in Frameworks */,
 				4D92D2F51A158F8F0043BAAC /* MobileCoreServices.framework in Frameworks */,
 				3F0E8BEF16486441008030A9 /* SystemConfiguration.framework in Frameworks */,
@@ -191,6 +196,7 @@
 				3F0CFE1A1631AEFB00FAA6DD /* SFSitegeistViewController.m */,
 				3F0CFEB01631E2F400FAA6DD /* SFAboutViewController.h */,
 				3F0CFEB11631E2F400FAA6DD /* SFAboutViewController.m */,
+				4D92D2F81A1802870043BAAC /* Sitegeist.storyboard */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -289,6 +295,7 @@
 		3FD00CE116133E6B0096596F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4D52607B1A203F750054D747 /* CoreLocation.framework */,
 				4D92D2F61A159D950043BAAC /* libPods-AFNetworking.a */,
 				4D92D2F41A158F8F0043BAAC /* MobileCoreServices.framework */,
 				3F0E8BEE16486441008030A9 /* SystemConfiguration.framework */,
@@ -398,6 +405,7 @@
 				3F5A07BE165AC98D0097AB45 /* 01-refresh@2x.png in Resources */,
 				3F2CC964165D640300D9E46A /* about.png in Resources */,
 				3F2CC965165D640300D9E46A /* about@2x.png in Resources */,
+				4D92D2F91A1802870043BAAC /* Sitegeist.storyboard in Resources */,
 				3F2CC968165D693300D9E46A /* 298-circlex.png in Resources */,
 				3F2CC969165D693300D9E46A /* 298-circlex@2x.png in Resources */,
 				3FF4D4F6165D714A00C9BC66 /* 42-info.png in Resources */,
